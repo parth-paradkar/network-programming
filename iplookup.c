@@ -58,3 +58,13 @@ int main(int argc,  char *argv[]){
 
 	return 0;
 }
+
+/*
+ Example: 
+  IP address for www.facebook.com
+
+  IPv4: 157.240.16.35
+  IPv6: 2a03:2880:f12f:83:face:b00c:0:25de
+
+ */
+
