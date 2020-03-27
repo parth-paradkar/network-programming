@@ -18,8 +18,8 @@ int main(int argc,  char *argv[]){
 	// Ensure that hints is empty
 	memset(&hints, 0, sizeof(hints));
 	// Set the required parameters in hints
-	hints.ai_family = AF_UNSPEC;
-	hints.ai_socktype = SOCK_STREAM;
+	hints.ai_family = AF_UNSPEC; // Any one of IPv4 or IPv6
+	hints.ai_socktype = SOCK_STREAM;// SOCK_STREAM or SOCK_DGRAM
 
 	// Call getaddrinfo() to get linked list of addrinfo objects
 	status = getaddrinfo(argv[1], NULL, &hints, &res);
