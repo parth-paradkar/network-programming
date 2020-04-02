@@ -140,11 +140,6 @@ int main(){
 		if(!fork()){ // This is the child process
 			// Close the socket that was created again
 			close(sockfd);
-			// send() => Send data to a socket
-			/* if(send(new_fd, msg, 13, 0) == -1){
-				perror("send");
-			} */
-
 			// Define the behaviour of server on getting a connection for an independent process
 			while(1){
 				if((numbytes = recv(new_fd, buf, MAXDATASIZE-1 ,0)) == -1){
@@ -159,14 +154,6 @@ int main(){
 				}
                         }
 			
-			/* if((numbytes = recv(new_fd, buf, MAXDATASIZE-1 ,0)) == -1){
-				perror("recv");
-				exit(1);
-			} */
-			
-		
-			
-
 			// Close the child process
 			close(new_fd);
 			exit(0);

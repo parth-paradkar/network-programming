@@ -75,15 +75,10 @@ int main(int argc, char *argv[])
             s, sizeof s);
     printf("client: connecting to %s\n", s);
 
-    freeaddrinfo(servinfo); // all done with this structure
+    freeaddrinfo(servinfo);  // all done with this structure
 
-    /* if ((numbytes = recv(sockfd, buf, MAXDATASIZE-1, 0)) == -1) {
-        perror("recv");
-        exit(1);
-    }
 
-    buf[numbytes] = '\0';*/
-
+	
     while(1) {
 	    printf("Enter the message to be sent: ");
 	    fgets(msg, MAX_MSG_LEN, stdin);
@@ -94,7 +89,6 @@ int main(int argc, char *argv[])
 	    }
     }
 
-    // printf("client: received '%s'\n",buf);
 
     close(sockfd);
 
