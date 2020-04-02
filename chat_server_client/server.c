@@ -142,16 +142,16 @@ int main(){
 			close(sockfd);
 			// Define the behaviour of server on getting a connection for an independent process
 			while(1){
-				if((numbytes = recv(new_fd, buf, MAXDATASIZE-1 ,0)) == -1){
+				numbytes = recv(new_fd, buf, MAXDATASIZE-1 ,0);
+				if(numbytes == -1){
                                 	perror("recv");
                                 	exit(1);
-				}
-				buf[numbytes] = '\0';
-				printf("Message recieved: %s\n", buf);
-				if(strcmp(buf, "bye")){
+				} else if(numbytes == 0) {	
 					printf("Closing connection to %s\n", s);
 					break;
 				}
+				buf[numbytes] = '\0';
+				printf("Message recieved: %s\n", buf);
                         }
 			
 			// Close the child process
