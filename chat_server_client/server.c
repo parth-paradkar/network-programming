@@ -141,6 +141,12 @@ int main(){
 			// Close the socket that was created again
 			close(sockfd);
 			// Define the behaviour of server on getting a connection for an independent process
+			// Greet the client
+			if(send(new_fd, msg, strlen(msg), 0) == -1){
+				perror("send");
+			} else {
+				printf("Hello sent to client");
+			}
 			while(1){
 				numbytes = recv(new_fd, buf, MAXDATASIZE-1 ,0);
 				if(numbytes == -1){

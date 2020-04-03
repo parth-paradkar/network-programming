@@ -76,8 +76,15 @@ int main(int argc, char *argv[])
     printf("client: connecting to %s\n", s);
 
     freeaddrinfo(servinfo);  // all done with this structure
-
-
+    
+    // Will wait for the server to send message
+    numbytes = recv(sockfd, buf, MAXDATASIZE-1, 0); 
+    if(numbytes != 0){
+	    printf("Message from %s\n", s);
+	    printf("%s", buf);
+    } else if(numbytes == -1){
+	    perror("recv");
+    }
 	
     while(1) {
 	    printf("Enter the message to be sent: ");
