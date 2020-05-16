@@ -50,9 +50,11 @@ int main(int argc,  char *argv[]){
 		}
 		// Converting to string
 		inet_ntop(p -> ai_family, addr, ipstr, sizeof(ipstr));
+		// Print the IP version and IP address fro all the addrinfo objects found
 		printf("  %s: %s\n", ipver, ipstr);
 
 	}
+	printf("\n");
 
 	freeaddrinfo(res);
 
