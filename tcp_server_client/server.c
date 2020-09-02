@@ -19,6 +19,8 @@ void sigchld_handler(int s){
 	// errno => number of the last error
 	int saved_errno = errno;
 	// waitpid() => suspends execution of the calling process until a child specified by pid argument has changed state
+	// -1 => wait for any child process, WNOHANG => return immediately if no child has exited (does not stop, moves to next iteration after checking)
+	// wait() and waitpid() man page: https://man7.org/linux/man-pages/man2/wait.2.html
 	while(waitpid(-1, NULL, WNOHANG) > 0);
 	errno = saved_errno;
 }
@@ -34,11 +36,11 @@ int main(){
 	int sockfd, new_fd;
 	struct addrinfo hints, *res, *p;
 	int status;
-	socklen_t sin_size;
+	socklen_t sin_size;https://man7.org/linux/man-pages/man2/wait.2.html
 	struct sockaddr_storage their_addr; // client's information
 	char s[INET6_ADDRSTRLEN];
 	int yes = 1; // Flag for socket options
-	struct sigaction sa; // info about how to handle signals
+	struct sigaction sa; // info about how to handle signals. man page: https://man7.org/linux/man-pages/man2/sigaction.2.html
 	char *msg = "Hello World!";
 	int msg_len = strlen(msg);
 	int bind_status;
@@ -118,7 +120,7 @@ int main(){
 	printf("Listening in port %s..\n", PORT);
 	while(1){
 		sin_size = sizeof(their_addr);
-		// Creating a new thread for the new connection => runs the same code
+		// Creating a new thread for the new connection => runs the same codelofi
 		// accept() => Returns a new socket descriptor
 		new_fd = accept(sockfd, (struct sockaddr *)&their_addr, &sin_size);
 		if(new_fd == -1) {
