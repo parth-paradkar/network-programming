@@ -36,7 +36,7 @@ int main(){
 	int sockfd, new_fd;
 	struct addrinfo hints, *res, *p;
 	int status;
-	socklen_t sin_size;https://man7.org/linux/man-pages/man2/wait.2.html
+	socklen_t sin_size; // man page: https://man7.org/linux/man-pages/man2/wait.2.html
 	struct sockaddr_storage their_addr; // client's information
 	char s[INET6_ADDRSTRLEN];
 	int yes = 1; // Flag for socket options
